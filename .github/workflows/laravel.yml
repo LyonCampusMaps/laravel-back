@@ -2,9 +2,9 @@ name: Laravel
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "main", "develop" ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ "main", "develop" ]
 
 jobs:
   laravel-tests:
@@ -49,8 +49,13 @@ jobs:
         SSHPASS: ${{ secrets.SSH_PASSWORD }}
       run: |
         sshpass -e ssh -o StrictHostKeyChecking=no -p 5022 bvuzptxx@node195-eu.n0c.com << 'EOF'
-          cd sites/api
-          git pull origin main
+          if [ "${{ github.ref }}" == "refs/heads/main" ]; then
+            cd sites/api
+            git pull origin main
+          elif [ "${{ github.ref }}" == "refs/heads/develop" ]; then
+            cd sites/dvpt-back
+            git pull origin develop
+          fi
           ~/composer.phar install --no-dev
           php artisan migrate --force
           php artisan cache:clear
