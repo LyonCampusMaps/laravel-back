@@ -56,8 +56,8 @@ jobs:
             cd sites/dvpt-back
             git pull origin develop
           fi
-          ls sites
-         ls www
+          ls sites/api
+         ls www/dvpt-back
           cd laravel-back
           ~/composer.phar install --no-dev
           php artisan migrate --force
