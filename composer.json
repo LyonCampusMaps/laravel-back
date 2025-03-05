@@ -6,10 +6,12 @@
     "license": "MIT",
     "require": {
         "php": "^8.3",
-        "filament/filament": "^3.2",
-        "laravel/framework": "^11.9",
+        "filament/filament": "^3.3",
+        "invaders-xx/filament-jsoneditor": "^5.0",
+        "laravel/framework": "^12.1",
         "laravel/sanctum": "^4.0",
-        "laravel/tinker": "^2.9"
+        "laravel/tinker": "^2.10",
+        "valentin-morice/filament-json-column": "^1.5"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",
