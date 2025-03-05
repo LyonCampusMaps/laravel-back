@@ -4,7 +4,8 @@
 
 <instance-profile id="lcb"
                  name="Lyon Campus Back"
-                 start-page="starter-topic.md">
-
-    <toc-element topic="starter-topic.md"/>
+                 start-page="Home.md">
+    <toc-element topic="Home.md"/>
+    <toc-element topic="Categories.md"/>
+    <toc-element topic="Interest-Points.md"/>
 </instance-profile>
