@@ -56,6 +56,7 @@ jobs:
             cd sites/dvpt-back
             git pull origin develop
           fi
+          cd sites/api
           ~/composer.phar install --no-dev
           php artisan migrate --force
           php artisan cache:clear
