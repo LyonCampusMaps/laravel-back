@@ -19,7 +19,7 @@ class InterestPointImporter extends Importer
             ImportColumn::make('address')->example('123 Example St.'),
             ImportColumn::make('latitude')->example(123.456),
             ImportColumn::make('longitude')->example(123.456),
-            ImportColumn::make('attributes')->example('{"key1": "value1", "key2": "value2"}'),
+            ImportColumn::make('attributes')->example('[{"attribute": "attribute1", "value": "value1"}, {"attribute": "attribute2", "value": "value2"}]'),
         ];
     }
 

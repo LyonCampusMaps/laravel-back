@@ -11,6 +11,7 @@ use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
+use ValentinMorice\FilamentJsonColumn\FilamentJsonColumn;
 
 class InterestPointResource extends Resource
 {
@@ -35,8 +36,7 @@ class InterestPointResource extends Resource
                 Forms\Components\TextInput::make('longitude')
                     ->numeric()
                     ->required(),
-                Forms\Components\KeyValue::make('attributes')
-                    ->required(),
+                FilamentJsonColumn::make('attributes'),
             ]);
     }
 
