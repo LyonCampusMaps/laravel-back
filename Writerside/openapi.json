@@ -1,0 +1,194 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "API Documentation",
+        "version": "1.0.0",
+        "description": "API Documentation for Lynterest API"
+    },
+    "servers": [
+        {
+            "url": "https://api.example.com/v1",
+            "description": "Production Server"
+        }
+    ],
+    "paths": {
+        "/categories": {
+            "get": {
+                "tags": ["categories"],
+                "summary": "Get all categories",
+                "responses": {
+                    "200": {
+                        "description": "List of categories",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Category"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/categories/{id}": {
+            "get": {
+                "tags": ["categories"],
+                "summary": "Get a specific category",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Category details",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Category"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/interest-points": {
+            "get": {
+                "tags": ["interest-points"],
+                "summary": "Get all interest points",
+                "responses": {
+                    "200": {
+                        "description": "List of interest points",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/InterestPoint"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/interest-points/{id}": {
+            "get": {
+                "tags": ["interest-points"],
+                "summary": "Get a specific interest points",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Interest point details",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/InterestPoint"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Category": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "name": {
+                        "type": "string",
+                        "example": "Category 1"
+                    },
+                    "color": {
+                        "type": "string",
+                        "example": "#FFFFFF"
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2021-01-01T00:00:00Z"
+                    },
+                    "updated_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2021-01-01T00:00:00Z"
+                    }
+                }
+            },
+            "InterestPoint": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "name": {
+                        "type": "string",
+                        "example": "Interest Point 1"
+                    },
+                    "category_id": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "address": {
+                        "type": "string",
+                        "example": "123 Main St, Springfield, IL 62701"
+                    },
+                    "latitude": {
+                        "type": "number",
+                        "example": 39.781721
+                    },
+                    "longitude": {
+                        "type": "number",
+                        "example": -89.650148
+                    },
+                    "attributes": {
+                        "type": "object",
+                        "example": {
+                            "key1": "value1",
+                            "key2": "value2"
+                        }
+                    },
+                    "category": {
+                        "$ref": "#/components/schemas/Category"
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2021-01-01T00:00:00Z"
+                    },
+                    "updated_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2021-01-01T00:00:00Z"
+                    }
+                }
+            }
+        }
+    }
+}
