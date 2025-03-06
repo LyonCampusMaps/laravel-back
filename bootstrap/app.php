@@ -17,7 +17,7 @@ return Application::configure(basePath: dirname(__DIR__))
     ->withExceptions(function (Exceptions $exceptions) {
         //
     })->withSchedule(function (Schedule $schedule){
-        $schedule->command('queue:restart --timeout=60 --sleep=3')
+        $schedule->command('queue:work --timeout=60 --sleep=3')
             ->everyMinute()
             ->withoutOverlapping();
     })->create();
