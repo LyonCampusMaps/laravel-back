@@ -14,6 +14,6 @@ class InterestPointController extends Controller
 
     public function index(): JsonResponse
     {
-        return response()->json(InterestPoint::all()->flatten());
+        return response()->json(InterestPoint::all()->load('category')->flatten());
     }
 }
