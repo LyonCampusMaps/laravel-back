@@ -17,7 +17,11 @@ return Application::configure(basePath: dirname(__DIR__))
     ->withExceptions(function (Exceptions $exceptions) {
         //
     })->withSchedule(function (Schedule $schedule){
-        $schedule->command('queue:work --timeout=60 --sleep=3')
+//        $schedule->call(function () {
+//            \Log::info('✔ Scheduler appelé à ' . now());
+//        })->everyMinute();
+        $schedule->command('run:queue-once')
             ->everyMinute()
-            ->withoutOverlapping();
+            ->withoutOverlapping()
+            ->sendOutputTo(storage_path('logs/worker.log'));
     })->create();
