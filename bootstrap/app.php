@@ -17,9 +17,6 @@ return Application::configure(basePath: dirname(__DIR__))
     ->withExceptions(function (Exceptions $exceptions) {
         //
     })->withSchedule(function (Schedule $schedule){
-        $schedule->call(function () {
-            \Log::info('✔ Scheduler appelé à ' . now());
-        })->everyMinute();
         $schedule->command('run:queue-once')
             ->everyMinute()
             ->withoutOverlapping()
