@@ -33,7 +33,11 @@ class BlogResource extends Resource
                     ->required()
                     ->maxLength(255),
                 Forms\Components\FileUpload::make('image')
-                    ->image(),
+                    ->image()
+                    ->imageResizeMode('cover')
+                    ->imageCropAspectRatio('16:9')
+                    ->imageResizeTargetWidth('1280')
+                    ->imageResizeTargetHeight('820'),
                 Forms\Components\Select::make('category_id')
                     ->relationship('category', 'name')
                     ->required(),
