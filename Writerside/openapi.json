@@ -109,6 +109,55 @@
                     }
                 }
             }
+        },
+        "/blogs": {
+            "get": {
+                "tags": ["blogs"],
+                "summary": "Get all blogs",
+                "responses": {
+                    "200": {
+                        "description": "List of blogs",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Blog"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/blogs/{id}": {
+            "get": {
+                "tags": ["blogs"],
+                "summary": "Get a specific blog",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Blog details",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Blog"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
     },
     "components": {
@@ -176,6 +225,40 @@
                     },
                     "category": {
                         "$ref": "#/components/schemas/Category"
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2021-01-01T00:00:00Z"
+                    },
+                    "updated_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2021-01-01T00:00:00Z"
+                    }
+                }
+            },
+            "Blog": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "title": {
+                        "type": "string",
+                        "example": "Blog 1"
+                    },
+                    "image": {
+                        "type": "string",
+                        "example": "ABCDEF.jpeg"
+                    },
+                    "category": {
+                        "$ref": "#/components/schemas/Category"
+                    },
+                    "content": {
+                        "type": "string",
+                        "example": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
                     },
                     "created_at": {
                         "type": "string",
